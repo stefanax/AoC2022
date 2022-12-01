@@ -4,7 +4,7 @@ namespace AoC2022;
 
 public class Day1
 {
-    private InputFiles _inputFiles = new InputFiles();
+    private readonly InputFiles _inputFiles = new InputFiles();
 
     public void Step1()
     {
@@ -23,7 +23,7 @@ public class Day1
             }
             else
             {
-                currentCalories += Int32.Parse(inputListItem);    
+                currentCalories += Int32.Parse(inputListItem);
             }
         }
         
@@ -49,7 +49,7 @@ public class Day1
             }
             else
             {
-                currentCalories += Int32.Parse(inputListItem);    
+                currentCalories += Int32.Parse(inputListItem);
             }
         }
         
@@ -59,7 +59,7 @@ public class Day1
         Console.WriteLine($"Step Two Total Max Cal: {totalMaxCalories}");
     }
 
-    public void CheckListValues(List<int> list, int value)
+    private void CheckListValues(IList<int> list, int value)
     {
         if (value >= list[0])
         {
