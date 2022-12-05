@@ -55,6 +55,42 @@ public class Day3
 
     public void Step2()
     {
+        var input = _inputFiles.ReadInputFileForDay(3, false);
+        var inputList = _inputFiles.SplitString(input);
+
+        var score = 0;
+
+        for (var i = 0; i < inputList.Length; i += 3)
+        {
+            foreach (var backpackItemOne in inputList[i])
+            {
+                foreach (var backpackItemTwo in inputList[i+1])
+                {
+                    foreach (var backpackItemThree in inputList[i+2])
+                    {
+                        if (backpackItemOne == backpackItemTwo && backpackItemTwo == backpackItemThree)
+                        {
+                            int charValue = backpackItemOne;
+                            //Console.WriteLine($"Meep - Found item: {foundItem}   Char value {charValue}");
+                            if (charValue < 97)
+                            {
+                                charValue -= 38;
+                            }
+                            else
+                            {
+                                charValue -= 96;
+                            }
+
+                            //Console.WriteLine($"Meep 2 - Found item: {foundItem}   Char value {charValue}");
+                            score += charValue;
+                            goto EndOfLoop;
+                        }                
+                    }
+                }   
+            }
+            EndOfLoop: ;
+        }
         
+        Console.WriteLine($"Day Three Step Two Score: {score}");
     }
 }
